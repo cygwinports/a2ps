@@ -1,0 +1,20 @@
+--- origsrc/a2ps-4.14/configure.in	2007-05-01 23:35:49.000000000 -0500
++++ src/a2ps-4.14/configure.in	2010-09-29 05:27:02.670787200 -0500
+@@ -208,6 +208,7 @@ AC_MSG_CHECKING(for PostScript fonts pat
+ # Find out if ghostscript is installed
+ ac_psfont_path=
+ for ac_dir in /usr/local/ghostscript/fonts \
++  /usr/share/ghostscript/fonts \
+   /usr/local/share/ghostscript/fonts;
+ do
+   if test "cd $ac_dir 2>/dev/null && echo *.afm"; then
+--- origsrc/a2ps-4.14/ogonkify/configure.in	2007-12-28 20:05:05.000000000 -0600
++++ src/a2ps-4.14/ogonkify/configure.in	2010-09-29 05:26:32.049084300 -0500
+@@ -22,6 +22,7 @@ AC_DEFUN([ad_IBMFONTS],
+  [AC_PATH_X
+   AC_MSG_CHECKING(for IBM font files)
+   for i in $x_libraries/X11/fonts/Type1 \
++     /usr/share/fonts/Type1 \
+      /usr/local/share/TeX/gs/fonts
+   do
+     if test -r "$i"; then
