@@ -38,6 +38,7 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-resource-leak.patch
 	4.14-font-paths.patch
 	4.14-gnusource.patch
+	4.14-libiconv.patch
 "
 
 a2ps_REQUIRES="bzip2 cygutils file font-ibm-type1 ghostscript ghostscript-fonts-std"
