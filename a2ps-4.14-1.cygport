@@ -1,9 +1,0 @@
-DESCRIPTION="Anything to PostScript converter"
-HOMEPAGE="http://www.gnu.org/software/a2ps/"
-SRC_URI="mirror://gnu/a2ps/${P}.tar.gz"
-PATCH_URI="4.14-font-paths.patch"
-
-DIFF_EXCLUDES="doc"
-
-CPPFLAGS+=" -DHAVE_MEMPCPY"
-NO_AUTOPOINT=1

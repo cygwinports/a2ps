@@ -1,8 +1,0 @@
-category: Text
-requires: libintl8 libpaper1 bzip2 cygutils file font-ibm-type1 ghostscript ghostscript-fonts-std gzip ImageMagick psutils tetex-bin
-sdesc: "Anything to PostScript converter"
-ldesc: "a2ps is an Any to PostScript filter. It started as a Text to 
-PostScript converter, with pretty printing features and all the expected 
-features from this kind of programs. But today, it is also able to deal 
-with other file types (PostScript, Texinfo, compressed, whatever...) 
-provided you have the necessary tools."

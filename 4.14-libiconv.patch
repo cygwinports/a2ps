@@ -1,0 +1,10 @@
+--- origsrc/a2ps-4.14/src/Makefile.am	2013-07-07 23:02:44.812533800 -0500
++++ src/a2ps-4.14/src/Makefile.am	2013-07-07 23:16:06.484386800 -0500
+@@ -51,6 +51,6 @@ LEX = @LEX@
+ # I really don't understand why)...
+ INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_builddir)/intl
+ 
+-a2ps_LDADD = $(top_builddir)/lib/liba2ps.la @LIBINTL@ -lm
++a2ps_LDADD = $(top_builddir)/lib/liba2ps.la $(LIBINTL) $(LIBICONV) -lm
+ 
+ EXTRA_DIST = $(BUILT_SOURCES)

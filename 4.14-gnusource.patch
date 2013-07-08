@@ -1,0 +1,20 @@
+--- origsrc/a2ps-4.14/lib/options.c	2007-12-28 19:58:21.000000000 -0600
++++ src/a2ps-4.14/lib/options.c	2013-07-07 22:51:40.267524000 -0500
+@@ -57,7 +57,6 @@
+ 
+ #define MAN_LINES               66	/* no lines for a man */
+ extern char *program_name;
+-extern const char *program_invocation_name;
+ 
+ /*
+  * Hooks used
+--- origsrc/a2ps-4.14/src/main.c	2013-07-07 23:01:25.056972100 -0500
++++ src/a2ps-4.14/src/main.c	2013-07-07 23:00:46.444763600 -0500
+@@ -107,7 +107,6 @@ enum behavior behavior = b_ps;
+    defined twice, see lib/confg.gperf, handling of `Options:'. */
+ 
+ char *program_name;
+-const char *program_invocation_name;
+ 
+ /* Stores the data of liba2ps.  */
+ 

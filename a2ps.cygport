@@ -1,0 +1,74 @@
+NAME="a2ps"
+VERSION=4.14
+RELEASE=2
+CATEGORY="Text"
+SUMMARY="Anything to PostScript converter"
+DESCRIPTION="a2ps is an Any to PostScript filter. It started as a Text to
+PostScript converter, with pretty printing features and all the expected
+features from this kind of programs. But today, it is also able to deal with
+other file types (PostScript, Texinfo, compressed, whatever...) provided you
+have the necessary tools."
+HOMEPAGE="http://www.gnu.org/software/a2ps/"
+SRC_URI="mirror://gnu/a2ps/a2ps-${VERSION}.tar.gz
+         http://pkgs.fedoraproject.org/repo/pkgs/a2ps/i18n-fonts-0.1.tar.gz/fee1456d0e6e94af4fc5b5a1bb9687b7/i18n-fonts-0.1.tar.gz"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-etc.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-security.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-texi-comments.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-sort.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-iso5-minus.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-perl.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-eucjp.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-autoenc.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13b-attr.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13b-numeric.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13b-encoding.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13b-tilde.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-bad-free.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-euckr.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-hebrew.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-make-fonts-map.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-wdiff.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-U.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-mb.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.14-texinfo-nodes.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-forward-null.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-overrun-dynamic.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-overrun-static.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-resource-leak.patch
+	4.14-font-paths.patch
+	4.14-gnusource.patch
+"
+
+a2ps_REQUIRES="bzip2 cygutils file font-ibm-type1 ghostscript ghostscript-fonts-std"
+a2ps_REQUIRES+=" groff gv gzip html2ps ImageMagick texinfo texlive"
+a2ps_REQUIRES+=" texlive-collection-latex texlive-collection-fontutils"
+
+DIFF_EXCLUDES="doc"
+
+CYGPORT_USE_UNSTABLE_API=1
+src_unpack_hook() {
+	rm -fr i18n-fonts-0.1/
+	mv ../i18n-fonts-0.1 .
+	# created by patchset
+	rm -f encoding/{euc-jp,euc-kr,iso8}.edf README.eucJP
+	# work around erroneous hunk in eucjp.patch
+	touch src/jcode.{c,h}
+}
+
+CPPFLAGS+=" -DHAVE_MEMPCPY -D__mempcpy=mempcpy"
+NO_AUTOPOINT=1
+NO_AUTOHEADER=1
+
+src_install() {
+	cd ${B}
+	cyginstall include_HEADERS= lib_LTLIBRARIES=
+
+	make_etc_defaults /etc
+
+	insinto /usr/share/a2ps/afm
+	doins ${S}/i18n-fonts-0.1/afm/*.afm
+
+	insinto /usr/share/a2ps/fonts
+	doins ${S}/i18n-fonts-0.1/fonts/*.pfb
+}
