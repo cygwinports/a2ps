@@ -41,7 +41,7 @@ PATCH_URI="
 	4.14-libiconv.patch
 "
 
-a2ps_REQUIRES="bzip2 cygutils file font-ibm-type1 ghostscript ghostscript-fonts-std"
+a2ps_REQUIRES="bzip2 cygutils-extra file font-ibm-type1 ghostscript ghostscript-fonts-std"
 a2ps_REQUIRES+=" groff gv gzip html2ps ImageMagick texinfo texlive"
 a2ps_REQUIRES+=" texlive-collection-latex texlive-collection-fontutils"
 
