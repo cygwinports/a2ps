@@ -1,6 +1,6 @@
 NAME="a2ps"
 VERSION=4.14
-RELEASE=2
+RELEASE=3
 CATEGORY="Text"
 SUMMARY="Anything to PostScript converter"
 DESCRIPTION="a2ps is an Any to PostScript filter. It started as a Text to
@@ -26,6 +26,7 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13b-tilde.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-bad-free.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-euckr.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-format-security.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-4.13-hebrew.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-make-fonts-map.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-wdiff.patch
@@ -36,6 +37,7 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-overrun-dynamic.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-overrun-static.patch
 	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-resource-leak.patch
+	http://pkgs.fedoraproject.org/cgit/a2ps.git/plain/a2ps-CVE-2014-0466.patch
 	4.14-font-paths.patch
 	4.14-gnusource.patch
 	4.14-libiconv.patch
